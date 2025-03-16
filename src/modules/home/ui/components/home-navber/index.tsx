@@ -1,5 +1,4 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import Image from "next/image";
 import Link from "next/link";
 import { Search_Input } from "./search-input";
 import { Auth_Button } from "@/modules/auth/ui/components/auth-button";
@@ -13,13 +12,11 @@ export function Home_Navbar() {
             <SidebarTrigger />
             <Link href={"/"}>
               <div className="p-4 flex items-center gap-1">
-                <Image
-                  src="/logo.svg"
-                  height={50}
-                  width={50}
-                  alt="Youtube Logo"
-                />
-                <p className="text-2xl font-bold tracking-tight">YouTube</p>
+                <div className="bg-gradient-to-r from-blue-700 via-slate-900 to-violet-600 text-transparent bg-clip-text relative">
+                  <h1 className="text-xl font-bold tracking-tight text-transparent text-center md:text-3xl">
+                    Nova Insights
+                  </h1>
+                </div>
               </div>
             </Link>
           </div>

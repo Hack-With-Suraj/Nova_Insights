@@ -1,12 +1,19 @@
-import Image from "next/image";
-import React from "react";
-export default function page() {
+import { HydrateClient, trpc } from "@/trpc/server";
+import Pageclient from "./client";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+
+export default async function page() {
+  void trpc.hello.prefetch({ text: "suraj" });
   return (
     <>
-      <div className="p-4 flex items-center gap-1">
-        <Image src="/logo.svg" height={50} width={50} alt="Youtube Logo" />
-        <p className="text-2xl font-bold tracking-tight">YouTube</p>
-      </div>
+      <HydrateClient>
+        <Suspense fallback={<p>loding...</p>}>
+        <ErrorBoundary fallback={<p>error...</p>} >
+          <Pageclient />
+        </ErrorBoundary>
+        </Suspense>
+      </HydrateClient>
     </>
   );
 }
