@@ -74,7 +74,7 @@ export async function POST(req: Request) {
     await db.delete(users).where(eq(users.clerkId, data.id));
   }
   if (eventType === "user.updated") {
-    const data = evt.data;
+    const {data} = evt;
 
     await db
       .update(users)
